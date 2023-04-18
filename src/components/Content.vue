@@ -11,7 +11,8 @@
                     <div class="grid-content "></div>
                 </el-col>
                 <el-col :span="4"><el-button type="primary">试题标签管理</el-button></el-col>
-                <el-col :span="4"><el-button type="success">创 建 题 库</el-button></el-col>
+                <el-col :span="4"><el-button type="success"><router-link to="/Create">创 建 题
+                            库</router-link></el-button></el-col>
             </el-row>
         </el-header>
         <el-main>
@@ -22,7 +23,9 @@
                             <div class="grid-content "></div>
                         </el-col>
                         <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
-                            <div class="grid-content" style="font-size:18px;display: flex;flex-direction: column;justify-content: center;">题库名称：</div>
+                            <div class="grid-content"
+                                style="font-size:18px;display: flex;flex-direction: column;justify-content: center;">题库名称：
+                            </div>
                         </el-col>
                         <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
                             <el-input v-model="input" placeholder=""></el-input>
@@ -39,7 +42,9 @@
                             <div class="grid-content "></div>
                         </el-col>
                         <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
-                            <div class="grid-content" style="font-size:18px;display: flex;flex-direction: column;justify-content: center;">创建人：</div>
+                            <div class="grid-content"
+                                style="font-size:18px;display: flex;flex-direction: column;justify-content: center;">创建人：
+                            </div>
                         </el-col>
                         <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
                             <el-input v-model="input" placeholder="请输入创建人"></el-input>
@@ -57,7 +62,7 @@
             </el-row>
             <el-row :gutter="10">
                 <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
-                    <div class="grid-content "></div>
+                    <div class="grid-content  "></div>
                 </el-col>
                 <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
                     <div class="grid-content "></div>
@@ -214,7 +219,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .el-row {
     margin-bottom: 20px;
 
@@ -247,4 +252,5 @@ export default {
 .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;
-}</style>
+}
+</style>

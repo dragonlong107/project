@@ -4,10 +4,19 @@ import HomeView from '../views/HomeView.vue'
 import Content from '../components/Content'
 import Create from '../components/Create'
 import single_choose from '../components/single_choose'
+import question_bank from '../components/question_bank'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    //路由跳转路径
+    path: '/question_bank',
+    //路由名称
+    name: 'question_bank',
+    //路由跳转组件
+    component: question_bank
+  },
   {
     //路由跳转路径
     path: '/Content',
