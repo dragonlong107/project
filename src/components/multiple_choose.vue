@@ -406,7 +406,7 @@
                 </el-col>
                 <el-col :span="6">
                     <div class="grid-content " style="display: flex;flex-direction: row;justify-content:space-between;">
-                        <el-button type="primary">保存单选题</el-button>
+                        <el-button type="primary">保存多选题</el-button>
                         <el-button>保存并继续</el-button>
                         <el-button>取消</el-button>
                     </div>

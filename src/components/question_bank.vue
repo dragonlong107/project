@@ -34,7 +34,7 @@
                                 </el-col>
                                 <el-col :span="18">
                                     <div class="grid-content ">
-                                        <el-input placeholder="" v-model="input" clearable>
+                                        <el-input placeholder="" v-model="input1" clearable>
                                         </el-input>
                                     </div>
                                 </el-col>
@@ -48,7 +48,7 @@
                                 </el-col>
                                 <el-col :span="18">
                                     <div class="grid-content ">
-                                        <el-input placeholder="请输入创建人" v-model="input" clearable>
+                                        <el-input placeholder="请输入创建人" v-model="input2" clearable>
                                         </el-input>
                                     </div>
                                 </el-col>
@@ -164,7 +164,8 @@ export default {
     nname: "question_bank",
     data() {
         return {
-            input: '',
+            input1: '',
+            input2: '',
             checked: false,
             checkAll: false,
             tableData: [{

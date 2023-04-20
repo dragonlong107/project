@@ -5,6 +5,7 @@ import Content from '../components/Content'
 import Create from '../components/Create'
 import single_choose from '../components/single_choose'
 import question_bank from '../components/question_bank'
+import multiple_choose from '../components/multiple_choose'
 
 Vue.use(VueRouter)
 
@@ -32,6 +33,14 @@ const routes = [
     name: 'Create',
     //路由跳转组件
     component: Create
+  },
+  {
+    //路由跳转路径
+    path: '/multiple_choose',
+    //路由名称
+    name: 'multiple_choose',
+    //路由跳转组件
+    component: multiple_choose
   },
   {
     //路由跳转路径
