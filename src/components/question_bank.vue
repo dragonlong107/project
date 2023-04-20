@@ -128,11 +128,9 @@
                     </el-table-column>
                     <el-table-column prop="judgment" label="判断" width="100">
                     </el-table-column>
-                    <el-table-column prop="fill" label="填空" width="100">
-                    </el-table-column>
+                    <!-- <el-table-column prop="fill" label="填空" width="100">
+                    </el-table-column> -->
                     <el-table-column prop="Q_A_person" label="问答(人工判分)" width="100">
-                    </el-table-column>
-                    <el-table-column prop="Q_A_system" label="问答(系统判分)" width="100">
                     </el-table-column>
                     <el-table-column prop="name" label="创建人" width="120">
                     </el-table-column>

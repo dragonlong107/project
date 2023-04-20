@@ -30,12 +30,12 @@
                         <el-row>
                             <el-col :span="10">
                                 <div class="grid-content ">
-                                    <el-radio-group v-model="radio">
-                                        <el-radio :label="3" style="font-weight: bold;">单选题</el-radio>
-                                        <el-radio :label="6" style="font-weight: bold;">多选题</el-radio>
-                                        <el-radio :label="9" style="font-weight: bold;">判断题</el-radio>
-                                        <el-radio :label="12" style="font-weight: bold;">填空题</el-radio>
-                                        <el-radio :label="15" style="font-weight: bold;">问答题</el-radio>
+                                    <el-radio-group v-model="radio" >
+                                        <el-radio label="3" v-model="radio" style="font-weight: bold;">单选题</el-radio>
+                                        <el-radio label="6" v-model="radio" style="font-weight: bold;">多选题</el-radio>
+                                        <el-radio label="9" v-model="radio" style="font-weight: bold;">判断题</el-radio>
+                                        <el-radio label="12" v-model="radio" style="font-weight: bold;">填空题</el-radio>
+                                        <el-radio label="15" v-model="radio" style="font-weight: bold;">问答题</el-radio>
                                     </el-radio-group>
                                 </div>
                             </el-col>
@@ -427,7 +427,7 @@ export default {
             input: '',
             text: '',
             textarea: '',
-            radio: 5,
+            radio: '3',
             radio1: 4,
             textarea2: '',
             dialogImageUrl: '',

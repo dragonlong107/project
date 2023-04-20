@@ -18,7 +18,7 @@
                 </el-col>
                 <el-col :span="3">
                     <div class="grid-content ">
-                        <div class="grid-content "><i class="el-icon-close"></i></div>
+                        <div class="grid-content "><router-link to="/question_bank"><i class="el-icon-close"></i></router-link></div>
                     </div>
                 </el-col>
                 <el-col :span="1">
@@ -38,37 +38,59 @@
                     <div class="grid-content "></div>
                 </el-col>
             </el-row>
-            <el-row :gutter="20">
+            <el-row>
                 <el-col :span="3">
                     <div class="grid-content "></div>
                 </el-col>
-                <el-col :span="18">
-                    <el-col :span="4">
-                        <div class="grid-content "><i class="el-icon-star-on"></i>题库名称:</div>
-                    </el-col>
-                    <el-col :span="16">
-                        <div class="grid-content "><el-input placeholder="请输入内容" v-model="input" clearable>
-                            </el-input></div>
-                    </el-col>
-                    <el-col :span="4">
-                        <div class="grid-content b">0/30</div>
-                    </el-col>
+                <el-col :span="18" style=" height: 200px;display: flex;flex-direction: column;justify-content:space-around;">
+                    <div class="grid-content ">
+                        <el-row>
+                            <el-col :span="2">
+                                <div class="grid-content "
+                                    style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+                                    <i class="el-icon-star-on" style="color:#DC143C"></i>
+                                    <div style="color:black">题库名称:</div>
+                                </div>
+                            </el-col>
+                            <el-col :span="18">
+                                <div class="grid-content ">
+                                    <el-input type="textarea" :rows="1" placeholder=" " v-model="textarea" maxlength="30"
+                                        show-word-limit size>
+                                    </el-input>
+                                </div>
+                            </el-col>
+                            <el-col :span="4">
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="2">
+                                <div class="grid-content "
+                                    style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
+                                    <i class="el-icon-star-on" style="color:#DC143C"></i>题库类型:
+                                    <div></div>
+                                </div>
+                            </el-col>
+                            <el-col :span="22">
+                                <div class="grid-content "
+                                    style="padding-left: 10px; padding-top: 3px; display: flex;flex-direction: row;justify-content: start;align-items: center;">
+                                    <el-radio v-model="radio" label="1"
+                                        style="display: flex;flex-direction: row;justify-content: start;align-items:center;">单选题</el-radio>
+                                    <el-radio v-model="radio" label="2"
+                                        style="display: flex;flex-direction: row;justify-content: start;align-items: center;">多选题</el-radio>
+                                    <el-radio v-model="radio" label="3"
+                                        style="display: flex;flex-direction: row;justify-content: start;align-items: center;">判断题</el-radio>
+                                    <el-radio v-model="radio" label="4"
+                                        style="display: flex;flex-direction: row;justify-content: start;align-items: center;">问答题</el-radio>
+                                </div>
+                            </el-col>
+                        </el-row>
+                    </div>
                 </el-col>
                 <el-col :span="3">
-                    <div class="grid-content "></div>
+                    <div class="grid-content"></div>
                 </el-col>
             </el-row>
-            <el-row :gutter="20">
-                <el-col :span="2">
-                    <div class="grid-content "></div>
-                </el-col>
-                <el-col :span="20">
-                    <div class="grid-content bg-purple"></div>
-                </el-col>
-                <el-col :span="2">
-                    <div class="grid-content "></div>
-                </el-col>
-            </el-row>
+
         </el-main>
         <el-footer>
             <el-row>
@@ -88,11 +110,12 @@
                     <div class="grid-content ">
                         <div class="grid-content ">
                             <el-col :span="12">
-                                <el-button>取消</el-button>
+                                <el-button><router-link to="/question_bank" style="text-decoration: none;color:black">取消</router-link></el-button>
 
                             </el-col>
                             <el-col :span="12">
-                                <el-button type="primary">确定</el-button>
+                                <el-button type="primary"><router-link to="/single_choose"
+                                        style="text-decoration: none; color:#ffffff;">确定</router-link></el-button>
                             </el-col>
                         </div>
                     </div>
@@ -112,7 +135,9 @@ export default {
     name: 'Create',
     data() {
         return {
-            input: ''
+            input: '',
+            textarea: '',
+            radio: '1'
         }
     }
 }
@@ -138,7 +163,7 @@ export default {
     /* background-color: #E9EEF3; */
     color: #333;
     text-align: center;
-    line-height: 160px;
+    /* line-height: 160px; */
 }
 
 body>.el-container {

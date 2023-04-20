@@ -31,11 +31,11 @@
                             <el-col :span="10">
                                 <div class="grid-content ">
                                     <el-radio-group v-model="radio">
-                                        <el-radio :label="3" style="font-weight: bold;">单选题</el-radio>
-                                        <el-radio :label="6" style="font-weight: bold;">多选题</el-radio>
-                                        <el-radio :label="9" style="font-weight: bold;">判断题</el-radio>
-                                        <el-radio :label="12" style="font-weight: bold;">填空题</el-radio>
-                                        <el-radio :label="15" style="font-weight: bold;">问答题</el-radio>
+                                        <el-radio v-model="radio" label="3" style="font-weight: bold;">单选题</el-radio>
+                                        <el-radio v-model="radio" label="6" style="font-weight: bold;">多选题</el-radio>
+                                        <el-radio v-model="radio" label="9" style="font-weight: bold;">判断题</el-radio>
+                                        <el-radio v-model="radio" label="12" style="font-weight: bold;">填空题</el-radio>
+                                        <el-radio v-model="radio" label="15" style="font-weight: bold;">问答题</el-radio>
                                     </el-radio-group>
                                 </div>
                             </el-col>
@@ -421,13 +421,13 @@
 
 <script>
 export default {
-    name: 'single_choose',
+    name: 'multiple_choose',
     data() {
         return {
             input: '',
             text: '',
             textarea: '',
-            radio: 5,
+            radio: '6',
             radio1: 4,
             textarea2: '',
             dialogImageUrl: '',
