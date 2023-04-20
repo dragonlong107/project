@@ -6,6 +6,8 @@ import Create from '../components/Create'
 import single_choose from '../components/single_choose'
 import question_bank from '../components/question_bank'
 import multiple_choose from '../components/multiple_choose'
+import judgement from '../components/judgement'
+import Q_A_person from '../components/Q_A_person'
 
 Vue.use(VueRouter)
 
@@ -49,6 +51,22 @@ const routes = [
     name: 'single_choose',
     //路由跳转组件
     component: single_choose
+  },
+  {
+    //路由跳转路径
+    path: '/judgement',
+    //路由名称
+    name: 'judgement',
+    //路由跳转组件
+    component: judgement
+  },
+  {
+    //路由跳转路径
+    path: '/Q_A_person',
+    //路由名称
+    name: 'Q_A_person',
+    //路由跳转组件
+    component: Q_A_person
   },
   {
     path: '/',
