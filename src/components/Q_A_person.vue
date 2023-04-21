@@ -31,11 +31,11 @@
                             <el-col :span="10">
                                 <div class="grid-content ">
                                     <el-radio-group v-model="radio">
-                                        <el-radio v-model="radio" label="3" style="font-weight: bold;">单选题</el-radio>
-                                        <el-radio v-model="radio" label="6" style="font-weight: bold;">多选题</el-radio>
-                                        <el-radio v-model="radio" label="9" style="font-weight: bold;">判断题</el-radio>
-                                        <el-radio v-model="radio" label="12" style="font-weight: bold;">填空题</el-radio>
-                                        <el-radio v-model="radio" label="15" style="font-weight: bold;">问答题</el-radio>
+                                        <el-radio label="3" v-model="radio" style="font-weight: bold;">单选题</el-radio>
+                                        <el-radio label="6" v-model="radio" style="font-weight: bold;">多选题</el-radio>
+                                        <el-radio label="9" v-model="radio" style="font-weight: bold;">判断题</el-radio>
+                                        <el-radio label="12" v-model="radio" style="font-weight: bold;">填空题</el-radio>
+                                        <el-radio label="15" v-model="radio" style="font-weight: bold;">问答题</el-radio>
                                     </el-radio-group>
                                 </div>
                             </el-col>
@@ -54,44 +54,23 @@
                             </el-col>
                             <el-col :span="20">
                                 <div class="grid-content">
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content "
-                                                style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                                                <i class="el-icon-star-on" style="color:#DC143C"></i>
-                                                <div style="color:black">题干:</div>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="21">
-                                            <div class="grid-content ">
-                                                <el-input type="textarea" :rows="6" placeholder=" " v-model="textarea"
-                                                    maxlength="500" show-word-limit size>
-                                                </el-input>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="1">
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                        <el-col :span="20">
-                                            <div class="grid-content ">
-                                                <div slot="tip" class="el-upload__tip"
-                                                    style="font-size: 14px;font-weight: bold; color:#c0c4cc;display: flex;justify-content: start;">
-                                                    问题没有标准答案，需要人工阅卷</div>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content    ">图片:</div>
-                                        </el-col>
-                                        <el-col :span="20" style="display: flex;justify-content:start;">
+                                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px"
+                                        class="demo-ruleForm">
+                                        <el-form-item label="题干：" prop="name">
+                                            <el-input v-model="ruleForm.name" type="textarea" :rows="6" maxlength="500"
+                                                show-word-limit></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="delivery">
+                                            <el-row>
+                                                <el-col :span="24">
+                                                    <div class="grid-content "
+                                                        style="font-size: 14px;font-weight: bold; color:#c0c4cc;display: flex;justify-content: start;">
+                                                        问答题没有标准答案，需要人工阅卷</div>
+                                                </el-col>
+                                            </el-row>
+                                        </el-form-item>
+                                        <el-form-item label="图片：" prop="delivery"
+                                            style="display: flex;flex-direction: row;justify-content: start;">
                                             <div class="grid-content ">
                                                 <el-dialog :visible.sync="dialogVisible">
                                                     <img width="100%" :src="dialogImageUrl" alt="">
@@ -117,48 +96,22 @@
                                                     </div>
                                                 </el-upload>
                                             </div>
-                                        </el-col>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                        <el-col :span="20">
-                                            <div class="grid-content ">
-                                                <div slot="tip" class="el-upload__tip"
-                                                    style="font-size: 14px;font-weight: bold; color:#c0c4cc;display: flex;justify-content: start;">
-                                                    允许上传的图片格式为jpg、jpeg、gif、png，最多上传4张照片，大小限制5M以内</div>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content "
-                                                style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                                                <div style="color:black">答案解析:</div>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="21">
-                                            <div class="grid-content ">
-                                                <el-input type="textarea" :rows="6" placeholder=" " v-model="textarea"
-                                                    maxlength="500" show-word-limit size>
-                                                </el-input>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="1">
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content    "></div>
-                                        </el-col>
-                                        <el-col :span="20" style="display: flex;justify-content:start;">
+                                        </el-form-item>
+                                        <el-form-item label="" prop="delivery">
+                                            <el-row>
+                                                <el-col :span="24">
+                                                    <div class="grid-content "
+                                                        style="font-size: 14px;font-weight: bold; color:#c0c4cc;display: flex;justify-content: start;">
+                                                        允许上传的图片格式为jpg、jpeg、gif、png，最多上传4张照片，大小限制5M以内</div>
+                                                </el-col>
+                                            </el-row>
+                                        </el-form-item>
+                                        <el-form-item label="答案解析：" prop="analysis-test">
+                                            <el-input v-model="ruleForm.name" type="textarea" :rows="6" maxlength="500"
+                                                show-word-limit></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="delivery"
+                                            style="display: flex;flex-direction: row;justify-content: start;">
                                             <div class="grid-content ">
                                                 <el-dialog :visible.sync="dialogVisible">
                                                     <img width="100%" :src="dialogImageUrl" alt="">
@@ -184,50 +137,44 @@
                                                     </div>
                                                 </el-upload>
                                             </div>
-                                        </el-col>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                        <el-col :span="20">
-                                            <div class="grid-content ">
-                                                <div slot="tip" class="el-upload__tip"
-                                                    style="font-size: 14px;font-weight: bold; color:#c0c4cc;display: flex;justify-content: start;">
-                                                    允许上传的图片格式为jpg、jpeg、gif、png，最多上传4张照片，大小限制5M以内</div>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="2">
-                                            <div class="grid-content "></div>
-                                        </el-col>
-                                    </el-row>
-                                    <el-row>
-                                        <el-col :span="2">
-                                            <div class="grid-content "
-                                                style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                                                <div style="color:black">标签:</div>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="8">
-                                            <div class="grid-content ">
-                                                <el-input placeholder=" " v-model="input" clearable>
-                                                </el-input>
-                                            </div>
-                                        </el-col>
-                                        <el-col :span="14">
-                                            <div class=" grid-content "
-                                                style="padding-left: 20px;padding-top: 3px; display: flex;flex-direction: row; justify-content: start;">
-                                                <el-button size="medium" round
-                                                    style=" color:#2191ff; margin-top: 3px; display: flex;flex-direction: row; justify-content: space-between;"><i
-                                                        class="el-icon-plus"></i>
-                                                    <div style="padding-top: 2px;">新增标签</div>
-                                                </el-button>
-                                            </div>
-                                        </el-col>
-                                    </el-row>
+                                        </el-form-item>
+                                        <el-form-item label="" prop="delivery">
+                                            <el-row>
+                                                <el-col :span="24">
+                                                    <div class="grid-content "
+                                                        style="font-size: 14px;font-weight: bold; color:#c0c4cc;display: flex;justify-content: start;">
+                                                        允许上传的图片格式为jpg、jpeg、gif、png，最多上传4张照片，大小限制5M以内</div>
+                                                </el-col>
+                                            </el-row>
+                                        </el-form-item>
+                                        <el-form-item label="标签：" prop="label-test">
+                                            <el-col :span="8">
+                                                <div class="grid-content ">
+                                                    <el-input placeholder=" " v-model="input" clearable>
+                                                    </el-input>
+                                                </div>
+                                            </el-col>
+                                            <el-col :span="14">
+                                                <div class=" grid-content "
+                                                    style="padding-left: 20px;padding-top: 3px; display: flex;flex-direction: row; justify-content: start;">
+                                                    <el-button size="medium" round
+                                                        style=" color:#2191ff; margin-top: 3px; display: flex;flex-direction: row; justify-content: space-between;"><i
+                                                            class="el-icon-plus"></i>
+                                                        <div style="padding-top: 2px;">新增标签</div>
+                                                    </el-button>
+                                                </div>
+                                            </el-col>
+                                        </el-form-item>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <el-form-item style="display: flex;flex-direction: row;justify-content: end;">
+                                            <el-button type="primary" @click="submitForm('ruleForm')">保存问答题</el-button>
+                                            <el-button @click="resetForm('ruleForm')"><router-link to="/question_bank" style="text-decoration: none;color: #1E90FF;">取消</router-link></el-button>
+                                        </el-form-item>
+                                    </el-form>
                                 </div>
                             </el-col>
                             <el-col :span="2">
@@ -241,29 +188,12 @@
                 </el-col>
             </el-row>
         </el-main>
-        <el-footer>
-            <el-row>
-                <el-col :span="14">
-                    <div class="grid-content "></div>
-                </el-col>
-                <el-col :span="6">
-                    <div class="grid-content " style="display: flex;flex-direction: row;justify-content:space-between;">
-                        <el-button type="primary">保存问答题</el-button>
-                        <el-button>保存并继续</el-button>
-                        <el-button>取消</el-button>
-                    </div>
-                </el-col>
-                <el-col :span="4">
-                    <div class="grid-content "></div>
-                </el-col>
-            </el-row>
-        </el-footer>
     </el-container>
 </template>
 
 <script>
 export default {
-    name: 'Q_A_person',
+    name: 'single_choose',
     data() {
         return {
             input: '',
@@ -275,6 +205,39 @@ export default {
             dialogImageUrl: '',
             dialogVisible: false,
             disabled: false,
+            ruleForm: {
+                name: '',
+                region: '',
+                date1: '',
+                date2: '',
+                delivery: false,
+                type: [],
+                resource: '',
+                desc: ''
+            },
+            rules: {
+                name: [
+                    { required: true, message: '请输入题目', trigger: 'blur' },
+                    { min: 1, max: 500, message: '长度在 1 到 500 个字符', trigger: 'blur' }
+                ],
+                
+                option: [
+                    { required: true, message: '请输入选项内容', trigger: 'blur' },
+                    { min: 1, max: 100, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                ],
+                analysis: [
+                    { required: true, message: '请输入答案解析', trigger: 'blur' },
+                    { min: 1, max: 500, message: '长度在 1 到 500 个字符', trigger: 'blur' }
+                ],
+                resource: [
+                    { required: true, message: '请选择一个选项', trigger: 'change' }
+                ],
+                label: [
+                    { required: true, message: '请输入标签内容', trigger: 'blur' },
+                    { min: 1, max: 100, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                ],
+                
+            }
         };
     },
     methods: {
@@ -288,7 +251,19 @@ export default {
         handleDownload(file) {
             console.log(file);
         },
-
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    alert('submit!');
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        }
     }
 }
 </script>

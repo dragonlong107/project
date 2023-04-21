@@ -18,7 +18,8 @@
                 </el-col>
                 <el-col :span="3">
                     <div class="grid-content ">
-                        <div class="grid-content "><router-link to="/question_bank"><i class="el-icon-close"></i></router-link></div>
+                        <div class="grid-content "><router-link to="/question_bank"><i
+                                    class="el-icon-close"></i></router-link></div>
                     </div>
                 </el-col>
                 <el-col :span="1">
@@ -42,91 +43,44 @@
                 <el-col :span="3">
                     <div class="grid-content "></div>
                 </el-col>
-                <el-col :span="18" style=" height: 200px;display: flex;flex-direction: column;justify-content:space-around;">
+                <el-col :span="18" style=" display: flex;flex-direction: column;justify-content:space-around;">
                     <div class="grid-content ">
-                        <el-row>
-                            <el-col :span="2">
-                                <div class="grid-content "
-                                    style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                                    <i class="el-icon-star-on" style="color:#DC143C"></i>
-                                    <div style="color:black">题库名称:</div>
-                                </div>
-                            </el-col>
-                            <el-col :span="18">
-                                <div class="grid-content ">
-                                    <el-input type="textarea" :rows="1" placeholder=" " v-model="textarea" maxlength="30"
-                                        show-word-limit size>
-                                    </el-input>
-                                </div>
-                            </el-col>
-                            <el-col :span="4">
-                            </el-col>
-                        </el-row>
-                        <el-row>
-                            <el-col :span="2">
-                                <div class="grid-content "
-                                    style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                                    <i class="el-icon-star-on" style="color:#DC143C"></i>题库类型:
-                                    <div></div>
-                                </div>
-                            </el-col>
-                            <el-col :span="22">
-                                <div class="grid-content "
-                                    style="padding-left: 10px; padding-top: 3px; display: flex;flex-direction: row;justify-content: start;align-items: center;">
-                                    <el-radio v-model="radio" label="1"
-                                        style="display: flex;flex-direction: row;justify-content: start;align-items:center;">单选题</el-radio>
-                                    <el-radio v-model="radio" label="2"
-                                        style="display: flex;flex-direction: row;justify-content: start;align-items: center;">多选题</el-radio>
-                                    <el-radio v-model="radio" label="3"
-                                        style="display: flex;flex-direction: row;justify-content: start;align-items: center;">判断题</el-radio>
-                                    <el-radio v-model="radio" label="4"
-                                        style="display: flex;flex-direction: row;justify-content: start;align-items: center;">问答题</el-radio>
-                                </div>
-                            </el-col>
-                        </el-row>
+                        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                            <el-form-item label="题库名称：" prop="name">
+                                <el-input v-model="ruleForm.name"
+                                    style="width: 800px;display: flex;flex-direction: row;justify-content: start;"
+                                    maxlength="30" show-word-limit></el-input>
+                            </el-form-item>
+                            <el-form-item label="题库类型：" prop="resource">
+                                <el-radio-group v-model="ruleForm.resource"
+                                    style="display: flex;flex-direction: row;justify-content: start;">
+                                    <el-radio label="单选题"
+                                        style="margin-top: 5px; display: flex;flex-direction: row;justify-content: start;"></el-radio>
+                                    <el-radio label="多选题"
+                                        style="margin-top: 5px; display: flex;flex-direction: row;justify-content: start;"></el-radio>
+                                    <el-radio label="判断题"
+                                        style="margin-top: 5px; display: flex;flex-direction: row;justify-content: start;"></el-radio>
+                                    <el-radio label="问答题"
+                                        style="margin-top: 5px; display: flex;flex-direction: row;justify-content: start;"></el-radio>
+                                </el-radio-group>
+                            </el-form-item>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <el-form-item style="display: flex;flex-direction: row;justify-content: end;">
+                                <el-button type="primary" @click="submitForm('ruleForm')"><router-link to="/single_choose" style="text-decoration: none;color:white;">立即创建</router-link></el-button>
+                                <el-button @click="resetForm('ruleForm')">重置</el-button>
+                            </el-form-item>
+                        </el-form>
                     </div>
                 </el-col>
                 <el-col :span="3">
                     <div class="grid-content"></div>
                 </el-col>
             </el-row>
-
         </el-main>
-        <el-footer>
-            <el-row>
-                <el-col :span="4">
-                    <div class="grid-content "></div>
-                </el-col>
-                <el-col :span="4">
-                    <div class="grid-content "></div>
-                </el-col>
-                <el-col :span="4">
-                    <div class="grid-content "></div>
-                </el-col>
-                <el-col :span="6">
-                    <div class="grid-content "></div>
-                </el-col>
-                <el-col :span="3">
-                    <div class="grid-content ">
-                        <div class="grid-content ">
-                            <el-col :span="12">
-                                <el-button><router-link to="/question_bank" style="text-decoration: none;color:black">取消</router-link></el-button>
-
-                            </el-col>
-                            <el-col :span="12">
-                                <el-button type="primary"><router-link to="/single_choose"
-                                        style="text-decoration: none; color:#ffffff;">确定</router-link></el-button>
-                            </el-col>
-                        </div>
-                    </div>
-                </el-col>
-                <el-col :span="2">
-                    <div class="grid-content "></div>
-                </el-col>
-
-
-            </el-row>
-        </el-footer>
     </el-container>
 </template>
 
@@ -137,7 +91,36 @@ export default {
         return {
             input: '',
             textarea: '',
-            radio: '1'
+            radio: '1',
+            ruleForm: {
+                name: '',     
+                resource: '',
+
+            },
+            rules: {
+                name: [
+                    { required: true, message: '请输入题库名称', trigger: 'blur' },
+                    { min: 1, max: 30, message: '长度在 1 到 30 个字符', trigger: 'blur' }
+                ],
+                resource: [
+                    { required: true, message: '请选择题库类型', trigger: 'change' }
+                ]
+            }
+        }
+    },
+    methods: {
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    alert('submit!');
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
         }
     }
 }
@@ -236,5 +219,4 @@ body>.el-container {
 .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;
-}
-</style>
+}</style>
