@@ -60,7 +60,7 @@
                                             <el-input v-model="ruleForm.Question_stem" type="textarea" :rows="6"
                                                 maxlength="500" show-word-limit></el-input>
                                         </el-form-item>
-                                        <el-form-item label="图片：" prop="pic"
+                                        <!-- <el-form-item label="图片：" prop="pic"
                                             style="display: flex;flex-direction: row;justify-content: start;">
                                             <div class="grid-content ">
                                                 <el-dialog :visible.sync="dialogVisible">
@@ -87,7 +87,7 @@
                                                     </div>
                                                 </el-upload>
                                             </div>
-                                        </el-form-item>
+                                        </el-form-item> -->
                                         <el-form-item label="" prop="prompt">
                                             <el-row>
                                                 <el-col :span="24">
@@ -97,168 +97,61 @@
                                                 </el-col>
                                             </el-row>
                                         </el-form-item>
-                                        <el-form-item label="选项：" prop="option">
-                                            <el-row>
-                                                <el-col :span="12">
-                                                    <div class="grid-content ">
-                                                        <el-row>
-                                                            <el-col :span="24">
-                                                                <el-row>
-                                                                    <el-col :span="2">
-                                                                        <div class="grid-content "
-                                                                            style="display: flex;flex-direction: column;justify-content: center;">
-                                                                            A:</div>
-                                                                    </el-col>
-                                                                    <el-col :span="16">
-                                                                        <div class="grid-content ">
-                                                                            <el-input type="text" placeholder=""
-                                                                                v-model="text" maxlength="100"
-                                                                                show-word-limit>
-                                                                            </el-input>
-                                                                        </div>
-                                                                    </el-col>
-                                                                    <el-col :span="2">
-                                                                        <div class="grid-content"
-                                                                            style="display: flex;flex-direction: column;justify-content: center;">
-                                                                            <router-link to=""><i
-                                                                                    class="el-icon-close"></i></router-link>
-                                                                        </div>
-                                                                    </el-col>
-                                                                    <el-col :span="4">
-                                                                        <div class="grid-content "
-                                                                            style="display: flex;flex-direction: column;justify-content: center;align-items: start;">
-                                                                            <!-- <router-link style="text-decoration:none;color:#59aaee;"
-                                                                        to=""></router-link> -->
-                                                                            <!-- action="https://jsonplaceholder.typicode.com/posts/" -->
-                                                                            <el-upload class="upload-demo"
-                                                                                action="https://jsonplaceholder.typicode.com/posts/"
-                                                                                :on-change="handleChange"
-                                                                                :file-list="fileList">
-                                                                                <el-button size="small"
-                                                                                    type="primary">添加图片</el-button>
+                                        <el-row>
+                                            <el-col :span="15">
+                                                <div class="grid-content ">
+                                                    <el-form-item label="选项A：" prop="optionA">
+                                                        <el-input v-model="ruleForm.optionA" type="textarea" maxlength="100"
+                                                            show-word-limit></el-input>
+                                                    </el-form-item>
+                                                </div>
+                                            </el-col>
+                                            <el-col :span="9">
+                                                <div class="grid-content "></div>
+                                            </el-col>
+                                        </el-row>
+                                        <el-row>
+                                            <el-col :span="15">
+                                                <div class="grid-content">
+                                                    <el-form-item label="选项B：" prop="optionB">
+                                                        <el-input v-model="ruleForm.optionB" type="textarea" maxlength="100"
+                                                            show-word-limit></el-input>
+                                                    </el-form-item>
+                                                </div>
+                                            </el-col>
+                                            <el-col :span="9">
+                                                <div class="grid-content "></div>
+                                            </el-col>
+                                        </el-row>
+                                        <el-row>
+                                            <el-col :span="15">
+                                                <div class="grid-content ">
+                                                    <el-form-item label="选项C：" prop="optionC">
+                                                        <el-input v-model="ruleForm.optionC" type="textarea" maxlength="100"
+                                                            show-word-limit></el-input>
+                                                    </el-form-item>
+                                                </div>
+                                            </el-col>
+                                            <el-col :span="9">
+                                                <div class="grid-content "></div>
+                                            </el-col>
+                                        </el-row>
+                                        <el-row>
+                                            <el-col :span="15">
+                                                <div class="grid-content ">
+                                                    <el-form-item label="选项D：" prop="optionD">
+                                                        <el-input v-model="ruleForm.optionD" type="textarea" maxlength="100"
+                                                            show-word-limit></el-input>
+                                                    </el-form-item>
+                                                </div>
+                                            </el-col>
+                                            <el-col :span="9">
+                                                <div class="grid-content "></div>
+                                            </el-col>
+                                        </el-row>
 
-                                                                            </el-upload>
-                                                                        </div>
-                                                                    </el-col>
-                                                                </el-row>
-                                                            </el-col>
-                                                        </el-row>
-                                                        <el-row>
-                                                            <el-col :span="24">
-                                                                <div class="grid-content ">
-                                                                    <el-row>
-                                                                        <el-col :span="2">
-                                                                            <div class="grid-content "
-                                                                                style="display: flex;flex-direction: column;justify-content: center;">
-                                                                                B:</div>
-                                                                        </el-col>
-                                                                        <el-col :span="16">
-                                                                            <div class="grid-content ">
-                                                                                <el-input type="text" placeholder=""
-                                                                                    v-model="text" maxlength="100"
-                                                                                    show-word-limit>
-                                                                                </el-input>
-                                                                            </div>
-                                                                        </el-col>
-                                                                        <el-col :span="2">
-                                                                            <div class="grid-content"
-                                                                                style="display: flex;flex-direction: column;justify-content: center;">
-                                                                                <router-link to=""><i
-                                                                                        class="el-icon-close"></i></router-link>
-                                                                            </div>
-                                                                        </el-col>
-                                                                        <el-col :span="4">
-                                                                            <div class="grid-content "
-                                                                                style="display: flex;flex-direction: column;justify-content: center;align-items: start;">
-                                                                                <router-link
-                                                                                    style="text-decoration:none;color:#59aaee;"
-                                                                                    to="">添加图片</router-link>
-                                                                            </div>
-                                                                        </el-col>
-                                                                    </el-row>
-                                                                </div>
-                                                            </el-col>
-                                                        </el-row>
-                                                        <el-row>
-                                                            <el-col :span="24">
-                                                                <div class="grid-content ">
-                                                                    <el-row>
 
-                                                                        <el-col :span="2">
-                                                                            <div class="grid-content "
-                                                                                style="display: flex;flex-direction: column;justify-content: center;">
-                                                                                C:</div>
-                                                                        </el-col>
-                                                                        <el-col :span="16">
-                                                                            <div class="grid-content ">
-                                                                                <el-input type="text" placeholder=""
-                                                                                    v-model="text" maxlength="100"
-                                                                                    show-word-limit>
-                                                                                </el-input>
-                                                                            </div>
-                                                                        </el-col>
-                                                                        <el-col :span="2">
-                                                                            <div class="grid-content"
-                                                                                style="display: flex;flex-direction: column;justify-content: center;">
-                                                                                <router-link to=""><i
-                                                                                        class="el-icon-close"></i></router-link>
-                                                                            </div>
-                                                                        </el-col>
-                                                                        <el-col :span="4">
-                                                                            <div class="grid-content "
-                                                                                style="display: flex;flex-direction: column;justify-content: center;align-items: start;">
-                                                                                <router-link
-                                                                                    style="text-decoration:none;color:#59aaee;"
-                                                                                    to="">添加图片</router-link>
-                                                                            </div>
-                                                                        </el-col>
-                                                                    </el-row>
-                                                                </div>
-                                                            </el-col>
-                                                        </el-row>
-                                                        <el-row>
-                                                            <el-col :span="24">
-                                                                <div class="grid-content ">
-                                                                    <el-row>
-                                                                        <el-col :span="2">
-                                                                            <div class="grid-content "
-                                                                                style="display: flex;flex-direction: column;justify-content: center;">
-                                                                                D:</div>
-                                                                        </el-col>
-                                                                        <el-col :span="16">
-                                                                            <div class="grid-content ">
-                                                                                <el-input type="text" placeholder=""
-                                                                                    v-model="text" maxlength="100"
-                                                                                    show-word-limit>
-                                                                                </el-input>
-                                                                            </div>
-                                                                        </el-col>
-                                                                        <el-col :span="2">
-                                                                            <div class="grid-content"
-                                                                                style="display: flex;flex-direction: column;justify-content: center;">
-                                                                                <router-link to=""><i
-                                                                                        class="el-icon-close"></i></router-link>
-                                                                            </div>
-                                                                        </el-col>
-                                                                        <el-col :span="4">
-                                                                            <div class="grid-content "
-                                                                                style="display: flex;flex-direction: column;justify-content: center;align-items: start;">
-                                                                                <router-link
-                                                                                    style="text-decoration:none;color:#59aaee;"
-                                                                                    to="">添加图片</router-link>
-                                                                            </div>
-                                                                        </el-col>
-                                                                    </el-row>
-                                                                </div>
-                                                            </el-col>
-                                                        </el-row>
-                                                    </div>
-                                                </el-col>
-                                                <el-col :span="12">
-                                                    <div class="grid-content"></div>
-                                                </el-col>
-                                            </el-row>
-                                        </el-form-item>
+
                                         <el-form-item label="正确答案：" prop="Correct_answer">
                                             <el-radio-group v-model="ruleForm.Correct_answer"
                                                 style="display: flex;flex-direction:row;justify-content: start;">
@@ -276,7 +169,7 @@
                                             <el-input v-model="ruleForm.Answer_analysis" type="textarea" :rows="6"
                                                 maxlength="500" show-word-limit></el-input>
                                         </el-form-item>
-                                        <el-form-item label="" prop="pic2"
+                                        <!-- <el-form-item label="" prop="pic2"
                                             style="display: flex;flex-direction: row;justify-content: start;">
                                             <div class="grid-content ">
                                                 <el-dialog :visible.sync="dialogVisible">
@@ -303,7 +196,7 @@
                                                     </div>
                                                 </el-upload>
                                             </div>
-                                        </el-form-item>
+                                        </el-form-item> -->
                                         <el-form-item label="" prop="prompt">
                                             <el-row>
                                                 <el-col :span="24">
@@ -313,7 +206,7 @@
                                                 </el-col>
                                             </el-row>
                                         </el-form-item>
-                                        <el-form-item label="标签：" prop="label">
+                                        <el-form-item label="备注：" prop="label">
                                             <el-col :span="8">
                                                 <div class="grid-content ">
                                                     <el-input placeholder=" " v-model="ruleForm.label" clearable>
@@ -323,11 +216,11 @@
                                             <el-col :span="14">
                                                 <div class=" grid-content "
                                                     style="padding-left: 20px;padding-top: 3px; display: flex;flex-direction: row; justify-content: start;">
-                                                    <el-button size="medium" round
+                                                    <!-- <el-button size="medium" round
                                                         style=" color:#2191ff; margin-top: 3px; display: flex;flex-direction: row; justify-content: space-between;"><i
                                                             class="el-icon-plus"></i>
                                                         <div style="padding-top: 2px;">新增标签</div>
-                                                    </el-button>
+                                                    </el-button> -->
                                                 </div>
                                             </el-col>
                                         </el-form-item>
@@ -362,7 +255,7 @@
 import Axios from 'axios';
 
 export default {
-    name: 'single_choose',
+    name: 'insert_single',
     data() {
         return {
             input: '',
@@ -379,27 +272,42 @@ export default {
                 Question_stem: '',
                 // pic: '',
                 // option: '',
-                // Correct_answer: '',
-                // Answer_analysis: '',
+                Correct_answer: '',
+                optionA: '',
+                optionB: '',
+                optionC: '',
+                optionD: '',
+                Answer_analysis: '',
                 // pic2: '',
-                // label: ''
+                label: ''
             },
             rules: {
                 Question_stem: [
                     { required: true, message: '请输入题目', trigger: 'blur' },
                     { min: 1, max: 500, message: '长度在 1 到 500 个字符', trigger: 'blur' }
                 ],
-
-                option1: [
-                    { required: true, message: '请输入选项内容', trigger: 'blur' },
-                    { min: 1, max: 100, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                optionA: [
+                    { required: true, message: '请输入选项A', trigger: 'blur' },
+                    { min: 1, max: 500, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                ],
+                optionB: [
+                    { required: true, message: '请输入选项B', trigger: 'blur' },
+                    { min: 1, max: 500, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                ],
+                optionC: [
+                    { required: true, message: '请输入选项C', trigger: 'blur' },
+                    { min: 1, max: 500, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                ],
+                optionD: [
+                    { required: true, message: '请输入选项D', trigger: 'blur' },
+                    { min: 1, max: 500, message: '长度在 1 到 100 个字符', trigger: 'blur' }
+                ],
+                Correct_answer: [
+                    { required: true, message: '请选择一个选项', trigger: 'change' }
                 ],
                 Answer_analysis: [
                     { required: true, message: '请输入答案解析', trigger: 'blur' },
                     { min: 1, max: 500, message: '长度在 1 到 500 个字符', trigger: 'blur' }
-                ],
-                resource: [
-                    { required: true, message: '请选择一个选项', trigger: 'change' }
                 ],
                 label: [
                     { required: true, message: '请输入标签内容', trigger: 'blur' },
@@ -407,10 +315,6 @@ export default {
                 ],
 
             },
-            //     fileList: [{
-            //   name: '',
-            //   url: ''
-            // }]
 
         };
     },

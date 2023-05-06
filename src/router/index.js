@@ -7,6 +7,10 @@ import question_bank from '../components/question_bank'
 import multiple_choose from '../components/multiple_choose'
 import judgement from '../components/judgement'
 import Q_A_person from '../components/Q_A_person'
+import insert_single from '../components/insert_single'
+import insert_multiple from '../components/insert_multiple'
+import insert_judgement from '../components/insert_judgement'
+import insert_Q_A from '../components/insert_Q_A'
 
 Vue.use(VueRouter)
 
@@ -18,6 +22,38 @@ const routes = [
     name: 'question_bank',
     //路由跳转组件
     component: question_bank
+  },
+  {
+    //路由跳转路径
+    path: '/insert_single',
+    //路由名称
+    name: 'insert_single',
+    //路由跳转组件
+    component: insert_single
+  },
+  {
+    //路由跳转路径
+    path: '/insert_multiple',
+    //路由名称
+    name: 'insert_multiple',
+    //路由跳转组件
+    component: insert_multiple
+  },
+  {
+    //路由跳转路径
+    path: '/insert_judgement',
+    //路由名称
+    name: 'insert_judgement',
+    //路由跳转组件
+    component: insert_judgement
+  },
+  {
+    //路由跳转路径
+    path: '/insert_Q_A',
+    //路由名称
+    name: 'insert_Q_A',
+    //路由跳转组件
+    component: insert_Q_A
   },
   {
     //路由跳转路径

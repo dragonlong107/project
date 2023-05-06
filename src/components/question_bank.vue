@@ -20,14 +20,15 @@
                         <el-col :span="5">
                             <div class="grid-content ">
                                 <el-button style="font-weight:bold;">试题标签管理</el-button>
-                                <el-button type="primary"><router-link to="/Create" style="font-weight:bold; color:white;text-decoration: none;">创建题库</router-link></el-button>
+                                <el-button type="primary"><router-link to="/Create"
+                                        style="font-weight:bold; color:white;text-decoration: none;">创建题库</router-link></el-button>
                             </div>
                         </el-col>
                     </el-row>
                 </el-header>
-                <el-main >
-                    <el-row >
-                        <el-col :span="6" >
+                <el-main>
+                    <el-row>
+                        <el-col :span="6">
                             <el-row style="display: flex;flex-direction:row;justify-content: center;align-items: center;">
                                 <el-col :span="6">
                                     题库名称:
@@ -55,10 +56,11 @@
                             </el-row>
                         </el-col>
                         <el-col :span="6">
-                            <el-row >
+                            <el-row>
                                 <el-col :span="12">
-                                    <div class="grid-content " >
-                                        <el-checkbox v-model="checked" style="display: flex;flex-direction:row;justify-content: center;align-items: center;">只看我创建的</el-checkbox>
+                                    <div class="grid-content ">
+                                        <el-checkbox v-model="checked"
+                                            style="display: flex;flex-direction:row;justify-content: center;align-items: center;">只看我创建的</el-checkbox>
                                     </div>
                                 </el-col>
                                 <el-col :span="6">
@@ -142,7 +144,7 @@
                         <template slot-scope="scope">
                             <el-button @click="handleClick(scope.row)" type="text" size="small">试题</el-button>
                             <el-button type="text" size="small">编辑</el-button>
-                            <el-button type="text" size="small">删除</el-button>
+                            <el-button @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
                             <el-button type="text" size="small">变更创建人</el-button>
                         </template>
                     </el-table-column>
@@ -159,7 +161,15 @@
 import { RouterLink } from 'vue-router';
 
 export default {
-    nname: "question_bank",
+    name: "question_bank",
+    created() {
+        let _this = this
+        // 请求后台数据
+        axios.get('http://localhost:8080/.../..').then(function (resp) {
+            _this.tableData = resp.data
+            console.log(resp.data)
+        })
+    },
     data() {
         return {
             input1: '',
@@ -265,6 +275,35 @@ export default {
         },
         handleSelectionChange(val) {
             this.multipleSelection = val;
+        },
+        handleDelete(row) {
+            let _this = this
+            this.$confirm('此操作将永久删除' + row.question_bank_name + ', 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+            }).then(() => {
+                axios.delete('http://localhost:8080/../..' + row.question_bank_name).then(function (resp) {
+                    if (resp.data) {
+                        _this.$alert(row.question_bank_name+'删除成功', '', {
+                            confirmButtonText: '确定',
+                            callback: action => {
+                                //重新加载页面
+                                location.reload()
+                            }
+                        });
+                    }
+                })
+                // this.$message({
+                //     type: 'success',
+                //     message: '删除成功!'
+                // });
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });
+            });
         }
     },
 
@@ -273,71 +312,72 @@ export default {
 </script>
 
 <style scoped>
- .el-row {
-     /* margin-bottom: 20px; */
-     /* 会报错，但是问题不大 */
-     /* &:last-child {
+.el-row {
+    /* margin-bottom: 20px; */
+    /* 会报错，但是问题不大 */
+    /* &:last-child {
          margin-bottom: 0;
      } */
- }
+}
 
- .el-col {
+.el-col {
     border-radius: 4px;
- }
+}
 
- .bg-purple-dark {
-     background: #99a9bf;
- }
+.bg-purple-dark {
+    background: #99a9bf;
+}
 
- .bg-purple {
-     background: #d3dce6;
- }
+.bg-purple {
+    background: #d3dce6;
+}
 
- .bg-purple-light {
-     background: #e5e9f2;
- }
+.bg-purple-light {
+    background: #e5e9f2;
+}
 
- .grid-content {
-     border-radius: 4px;
-     min-height: 40px;
- }
+.grid-content {
+    border-radius: 4px;
+    min-height: 40px;
+}
 
- .row-bg {
-     padding: 10px 0;
-     background-color: #f9fafc;
- }
+.row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+}
 
- .el-header,
- .el-footer {
-     /* background-color: #B3C0D1; */
-     color: #333;
-     text-align: center;
-     line-height: 60px;
- }
+.el-header,
+.el-footer {
+    /* background-color: #B3C0D1; */
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
 
- .el-aside {
-     background-color: #D3DCE6;
-     color: #333;
-     text-align: center;
-     line-height: 200px;
- }
+.el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+}
 
- .el-main {
-     /* background-color: #E9EEF3; */
-     color: #333;
-     text-align: center;
-     /* line-height: 40px; */
- }
+.el-main {
+    /* background-color: #E9EEF3; */
+    color: #333;
+    text-align: center;
+    /* line-height: 40px; */
+}
 
- body>.el-container {
-     margin-bottom: 40px;
- }
+body>.el-container {
+    margin-bottom: 40px;
+}
 
- .el-container:nth-child(5) .el-aside,
- .el-container:nth-child(6) .el-aside {
-     line-height: 260px;
- }
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+}
 
- .el-container:nth-child(7) .el-aside {
-     line-height: 320px;
- }</style>
+.el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+}
+</style>

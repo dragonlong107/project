@@ -51,7 +51,7 @@
                                     style="width: 800px;display: flex;flex-direction: row;justify-content: start;"
                                     maxlength="30" show-word-limit></el-input>
                             </el-form-item>
-                            <el-form-item label="题库类型：" prop="resource">
+                            <el-form-item label="题目类型：" prop="resource">
                                 <el-radio-group v-model="ruleForm.resource"
                                     style="display: flex;flex-direction: row;justify-content: start;">
                                     <el-radio label="单选题"
